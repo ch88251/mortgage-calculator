@@ -15,13 +15,119 @@ class MortgageCalculatorUI(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Mortgage Payoff Calculator")
-        self.resize(900, 600)
+        self.setFixedSize(800, 600)
         self.current_schedule = None
+        
+        # Apply warm, light blue and green styling
+        self.setStyleSheet("""
+            QWidget {
+                background-color: #F5F9FC;
+                font-family: 'Segoe UI', Arial, sans-serif;
+                font-size: 11pt;
+            }
+            
+            QLabel {
+                color: #2C5F7C;
+                font-weight: 500;
+                padding: 5px;
+            }
+            
+            QLineEdit {
+                background-color: white;
+                border: 2px solid #B3D9E6;
+                border-radius: 6px;
+                padding: 8px;
+                color: #2C5F7C;
+                selection-background-color: #7EC8A3;
+            }
+            
+            QLineEdit:focus {
+                border: 2px solid #5EAAD4;
+            }
+            
+            QPushButton {
+                background-color: #7EC8A3;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                padding: 10px 20px;
+                font-weight: 600;
+                min-width: 100px;
+            }
+            
+            QPushButton:hover {
+                background-color: #6BB592;
+            }
+            
+            QPushButton:pressed {
+                background-color: #5AA481;
+            }
+            
+            QPushButton#calculateBtn {
+                background-color: #5EAAD4;
+                font-size: 12pt;
+            }
+            
+            QPushButton#calculateBtn:hover {
+                background-color: #4A95BE;
+            }
+            
+            QPushButton#calculateBtn:pressed {
+                background-color: #3B7FA8;
+            }
+            
+            QTabWidget::pane {
+                border: 2px solid #B3D9E6;
+                border-radius: 8px;
+                background-color: white;
+                top: -2px;
+            }
+            
+            QTabBar::tab {
+                background-color: #D4EBF5;
+                color: #2C5F7C;
+                border: 2px solid #B3D9E6;
+                border-bottom: none;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                padding: 10px 20px;
+                margin-right: 2px;
+                font-weight: 500;
+            }
+            
+            QTabBar::tab:selected {
+                background-color: white;
+                color: #2C5F7C;
+                font-weight: 600;
+            }
+            
+            QTabBar::tab:hover {
+                background-color: #B3D9E6;
+            }
+            
+            QTableView {
+                background-color: white;
+                alternate-background-color: #F0F8FA;
+                border: none;
+                gridline-color: #D4EBF5;
+            }
+            
+            QHeaderView::section {
+                background-color: #D4EBF5;
+                color: #3B7FA8;
+                padding: 8px;
+                border: none;
+                font-weight: 600;
+            }
+        """)
 
         main_layout = QVBoxLayout(self)
+        main_layout.setSpacing(15)
+        main_layout.setContentsMargins(20, 20, 20, 20)
 
         # ---------- INPUT FORM ----------
         form_layout = QGridLayout()
+        form_layout.setSpacing(10)
 
         self.balance_edit = QLineEdit("142044.18")
         self.rate_edit = QLineEdit("2.25")
@@ -44,8 +150,10 @@ class MortgageCalculatorUI(QWidget):
 
         # ---------- BUTTON BAR ----------
         button_layout = QHBoxLayout()
+        button_layout.setSpacing(10)
 
         self.calculate_btn = QPushButton("Calculate")
+        self.calculate_btn.setObjectName("calculateBtn")
         self.save_btn = QPushButton("Export CSV")
         self.load_btn = QPushButton("Load Scenario")
 
@@ -86,7 +194,15 @@ class MortgageCalculatorUI(QWidget):
             model = AmortizationModel(schedule)
             table = QTableView()
             table.setModel(model)
-            table.resizeColumnsToContents()
+            table.setAlternatingRowColors(True)
+            
+            # Configure column widths
+            header = table.horizontalHeader()
+            header.setMinimumSectionSize(150)
+            table.setColumnWidth(0, 150)  # Date
+            table.setColumnWidth(1, 180)  # Principal Paid
+            table.setColumnWidth(2, 180)  # Interest Paid
+            table.setColumnWidth(3, 200)  # Remaining Balance
 
             chart_view = create_payoff_chart(schedule)
 
@@ -156,7 +272,15 @@ class MortgageCalculatorUI(QWidget):
             model = AmortizationModel(schedule)
             table = QTableView()
             table.setModel(model)
-            table.resizeColumnsToContents()
+            table.setAlternatingRowColors(True)
+            
+            # Configure column widths
+            header = table.horizontalHeader()
+            header.setMinimumSectionSize(150)
+            table.setColumnWidth(0, 150)  # Date
+            table.setColumnWidth(1, 180)  # Principal Paid
+            table.setColumnWidth(2, 180)  # Interest Paid
+            table.setColumnWidth(3, 200)  # Remaining Balance
 
             chart_view = create_payoff_chart(schedule)
 
