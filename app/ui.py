@@ -1,4 +1,5 @@
 from datetime import date
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QWidget, QLabel, QLineEdit, QPushButton,
     QVBoxLayout, QGridLayout, QFileDialog,
@@ -204,6 +205,7 @@ class MortgageCalculatorUI(QWidget):
             # Configure column widths
             header = table.horizontalHeader()
             header.setMinimumSectionSize(150)
+            header.setDefaultAlignment(Qt.AlignLeft)
             table.setColumnWidth(0, 150)  # Date
             table.setColumnWidth(1, 180)  # Principal Paid
             table.setColumnWidth(2, 180)  # Interest Paid
@@ -282,6 +284,7 @@ class MortgageCalculatorUI(QWidget):
             # Configure column widths
             header = table.horizontalHeader()
             header.setMinimumSectionSize(150)
+            header.setDefaultAlignment(Qt.AlignLeft)
             table.setColumnWidth(0, 150)  # Date
             table.setColumnWidth(1, 180)  # Principal Paid
             table.setColumnWidth(2, 180)  # Interest Paid
