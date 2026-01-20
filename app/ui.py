@@ -39,7 +39,7 @@ class MortgageCalculatorUI(QWidget):
                 border-radius: 6px;
                 padding: 8px;
                 color: #2C5F7C;
-                selection-background-color: #7EC8A3;
+                selection-background-color: #5EAAD4;
             }
             
             QLineEdit:focus {
@@ -47,7 +47,7 @@ class MortgageCalculatorUI(QWidget):
             }
             
             QPushButton {
-                background-color: #7EC8A3;
+                background-color: #5EAAD4;
                 color: white;
                 border: none;
                 border-radius: 8px;
@@ -57,11 +57,11 @@ class MortgageCalculatorUI(QWidget):
             }
             
             QPushButton:hover {
-                background-color: #6BB592;
+                background-color: #4A95BE;
             }
             
             QPushButton:pressed {
-                background-color: #5AA481;
+                background-color: #3B7FA8;
             }
             
             QPushButton#calculateBtn {
