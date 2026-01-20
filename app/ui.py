@@ -119,6 +119,11 @@ class MortgageCalculatorUI(QWidget):
                 border: none;
                 font-weight: 600;
             }
+            
+            QTableView QTableCornerButton::section {
+                background-color: #D4EBF5;
+                border: none;
+            }
         """)
 
         main_layout = QVBoxLayout(self)
